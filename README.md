@@ -58,8 +58,12 @@ async function convert(from, to, amount) {
 Quelle: Frankfurter API – siehe Dokumentation unter [frankfurter.dev](https://frankfurter.dev/).
 
 
+## Tech-Stack
 
-
+- **Frontend**: JavaScript/TypeScript
+- **Framework**: Angular 20
+- **IDE**: VSCode, Cursor
+- **Linting**: ESLint
 
 ## BBZBL Modul 324: Web-Applikation Template
 
