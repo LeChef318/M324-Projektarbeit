@@ -64,6 +64,7 @@ Quelle: Frankfurter API – siehe Dokumentation unter [frankfurter.dev](https://
 - **Framework**: Angular 20
 - **IDE**: VSCode, Cursor
 - **Linting**: ESLint
+- **Testing**: Jasmin & Karma
 
 ## BBZBL Modul 324: Web-Applikation Template
 
