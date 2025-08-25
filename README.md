@@ -23,41 +23,41 @@ Der Währungsrechner ist eine schlanke Webanwendung, mit der Beträge zwischen v
 
 ## 🛠️ Installation
 
-1. **Clone or download the repository:**
+1. **Klone oder lade das Repository herunter:**
    ```bash
-   git clone <your-repository-url>
+   git clone https://github.com/LeChef318/M324-Projektarbeit.git
    cd modul_projekt
    ```
 
-2. **Install dependencies:**
+2. **Installations dependencies:**
    ```bash
    npm install
    ```
 
-3. **Install Angular CLI globally (if not already installed):**
+3. **Installation von Angular CLI global (falls noch nicht installiert):**
    ```bash
    npm install -g @angular/cli@20
    ```
 
-## 🏃‍♂️ Running the Application
+## 🏃‍♂️ Applikation laufen lassen
 
-1. **Start the development server:**
+1. **Development Server starten:**
    ```bash
    npm start
    # or
    ng serve
    ```
 
-2. **Open your browser and navigate to:**
+2. **Öffne deinen Browser und navigiere zu:**
    ```
    http://localhost:4200
    ```
 
-The application will automatically reload when you make changes to the source files.
+Diese Applikation aktuallisiert sich automatisch wenn änderungen vorgenommen wurden.
 
-## 🏗️ Building for Production
+## 🏗️ Für Produktion bauen
 
-To build the project for production:
+Um das Projekt für die Produnktion zu bauen:
 
 ```bash
 npm run build
@@ -65,7 +65,7 @@ npm run build
 ng build
 ```
 
-The build artifacts will be stored in the `dist/` directory.
+Die build artifacts werden in `dist/` gespeichert.
 
 ### Datenfluss und Architektur
 
