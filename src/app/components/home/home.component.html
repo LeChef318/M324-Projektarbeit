@@ -1,0 +1,54 @@
+<div class="home-container">
+  <section class="hero-section">
+    <div class="hero-content">
+      <h1 class="hero-title">Lorem Ipsum Generator</h1>
+      <p class="hero-description">
+        Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, 
+        totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt.
+      </p>
+      <div class="hero-actions">
+        <button class="primary-button">Generate Text</button>
+        <button class="secondary-button">Random Words</button>
+        <button class="graph-button">🎲 Shuffle Content</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="features-section">
+    <div class="section-header">
+      <h2>Random Placeholder Features</h2>
+      <p>Discover amazing placeholder content that fills your screen with meaningful nonsense</p>
+    </div>
+    
+    <div class="features-grid">
+      @for (item of placeholderItems; track item.title) {
+        <div class="feature-card">
+          <div class="feature-icon">{{ item.icon }}</div>
+          <h3 class="feature-title">{{ item.title }}</h3>
+          <p class="feature-description">{{ item.description }}</p>
+        </div>
+      }
+    </div>
+  </section>
+
+  <section class="stats-section">
+    <div class="stats-container">
+      <div class="stat-item">
+        <div class="stat-number">42</div>
+        <div class="stat-label">Magic Numbers</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">🎯</div>
+        <div class="stat-label">Random Icons</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">∞</div>
+        <div class="stat-label">Possibilities</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">🚀</div>
+        <div class="stat-label">Rocket Speed</div>
+      </div>
+    </div>
+  </section>
+</div>
