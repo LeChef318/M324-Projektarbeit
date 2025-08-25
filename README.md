@@ -60,7 +60,7 @@ Quelle: Frankfurter API – siehe Dokumentation unter [frankfurter.dev](https://
 
 
 
-
+random change
 ## BBZBL Modul 324: Web-Applikation Template
 
 Dieses Template dient als Vorlage zum Starten eures Projekts.
