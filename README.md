@@ -40,6 +40,11 @@ async function convert(from, to, amount) {
 }
 ```
 
+### Linting Ruleset
+
+Das verwendete Ruleset ist das Standard-Ruleset von Angular und wurde von uns nicht verändert.
+(**Dies kann sich noch ändern, wenn wir die Notwendigkeit sehen**)
+
 ### Hinweise zur Nutzung
 
 - **Zeitzonen**: Die API speichert Daten in UTC; das „heutige“ Datum kann je nach Zeitzone variieren.
