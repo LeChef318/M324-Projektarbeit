@@ -1,5 +1,14 @@
 # Changelog
 
+## [1.3.0](https://github.com/LeChef318/M324-Projektarbeit/compare/v1.2.0...v1.3.0) (2025-09-01)
+
+
+### Features
+
+* added header ([b684d99](https://github.com/LeChef318/M324-Projektarbeit/commit/b684d996d8a456c3a7b8ba828605deb6b4ee03f9))
+* added header ([b684d99](https://github.com/LeChef318/M324-Projektarbeit/commit/b684d996d8a456c3a7b8ba828605deb6b4ee03f9))
+* added header ([f0717af](https://github.com/LeChef318/M324-Projektarbeit/commit/f0717af94a3cfdf02119d2656c421f6c19f75aa3))
+
 ## [1.2.0](https://github.com/LeChef318/M324-Projektarbeit/compare/v1.1.0...v1.2.0) (2025-09-01)
 
 
