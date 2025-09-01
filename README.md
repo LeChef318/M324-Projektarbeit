@@ -53,7 +53,7 @@ Der Währungsrechner ist eine schlanke Webanwendung, mit der Beträge zwischen v
    http://localhost:4200
    ```
 
-Diese Applikation aktuallisiert sich automatisch wenn änderungen vorgenommen wurden.
+Diese Applikation aktualisiert sich automatisch wenn Änderungen vorgenommen wurden.
 
 ## 🏗️ Für Produktion bauen
 
