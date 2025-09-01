@@ -21,6 +21,52 @@ Der Währungsrechner ist eine schlanke Webanwendung, mit der Beträge zwischen v
   - Aktuelle Kurse (Basis EUR): `https://api.frankfurter.dev/v1/latest`
   - Aktuelle Kurse mit anderer Basis und Zielwährungen: `https://api.frankfurter.dev/v1/latest?base=USD&symbols=CHF,EUR`
 
+## 🛠️ Installation
+
+1. **Klone oder lade das Repository herunter:**
+   ```bash
+   git clone https://github.com/LeChef318/M324-Projektarbeit.git
+   cd modul_projekt
+   ```
+
+2. **Installations dependencies:**
+   ```bash
+   npm install
+   ```
+
+3. **Installation von Angular CLI global (falls noch nicht installiert):**
+   ```bash
+   npm install -g @angular/cli@20
+   ```
+
+## 🏃‍♂️ Applikation laufen lassen
+
+1. **Development Server starten:**
+   ```bash
+   npm start
+   # or
+   ng serve
+   ```
+
+2. **Öffne deinen Browser und navigiere zu:**
+   ```
+   http://localhost:4200
+   ```
+
+Diese Applikation aktualisiert sich automatisch wenn Änderungen vorgenommen wurden.
+
+## 🏗️ Für Produktion bauen
+
+Um das Projekt für die Produnktion zu bauen:
+
+```bash
+npm run build
+# or
+ng build
+```
+
+Die build artifacts werden in `dist/` gespeichert.
+
 ### Datenfluss und Architektur
 
 1. Nutzer wählt Quellwährung, Zielwährung und Betrag.
