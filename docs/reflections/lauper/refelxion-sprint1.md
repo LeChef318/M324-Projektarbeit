@@ -4,7 +4,7 @@
 
 ## 1.1 Welche verschiedenen Themen beinhalteten wir bis jetzt?
 
-Wir haben uns beschäfftigt mit: was DevOps (eigene AWS instanz aufgsetzt und getestet) eigentlich ist welche seiten gehören dazu warum ist es wichtig wo sind Vorteile wo nachteile. Zudem haben wir das Agile arbeiten ganz kurz angeschaut und das Modul angschaut. Wir haben uns ganz kurz mit IDEs beschäfftig was sollte für unsere Projekte installiert sein wozu brauchen wir z.B. in VSCode gewisse packages die wir installiert haben? SSH und git wurde zwar kurz angeschaut aber bnicht wirklich behandelt. ES-Lint/ Prittier
+Wir haben uns beschäfftigt mit: was DevOps (eigene AWS instanz aufgsetzt und getestet) eigentlich ist welche seiten gehören dazu warum ist es wichtig wo sind Vorteile wo nachteile. Zudem haben wir das Agile arbeiten ganz kurz angeschaut aber nur in dem Massen und dem wir es auch brauchen werden und es wurde sehr kurz gehalten 4 Rollen wie Sprint Funktionieren welche Meetings *wir* haben werden und das Modul angschaut. Wir haben uns ganz kurz mit IDEs beschäfftig was sollte für unsere Projekte installiert sein wozu brauchen wir z.B. in VSCode gewisse packages die wir installiert haben? SSH und git wurde zwar kurz angeschaut aber bnicht wirklich behandelt. ES-Lint/ Prittier
 
 Woche 3: Ich war da leider Krank habe aber von der Modulwebseite erschlossen das da ein grosser Fokus auf dem Projekt war und noch kurz über Formatter gesprochen wurde.
 
