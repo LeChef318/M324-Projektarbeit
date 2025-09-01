@@ -1,5 +1,14 @@
 # Changelog
 
+## [1.2.0](https://github.com/LeChef318/M324-Projektarbeit/compare/v1.1.0...v1.2.0) (2025-09-01)
+
+
+### Features
+
+* added Footer with copyright and API informations ([701d417](https://github.com/LeChef318/M324-Projektarbeit/commit/701d41718703ab0221465a660226be94d96bd276))
+* added Footer with copyright and API informations ([#30](https://github.com/LeChef318/M324-Projektarbeit/issues/30)) ([701d417](https://github.com/LeChef318/M324-Projektarbeit/commit/701d41718703ab0221465a660226be94d96bd276))
+* added Fotter with copyright and API informations ([ba87fee](https://github.com/LeChef318/M324-Projektarbeit/commit/ba87fee75a2ed4d89cac7978bcd3f8e40e9aab7f))
+
 ## [1.1.0](https://github.com/LeChef318/M324-Projektarbeit/compare/v1.0.0...v1.1.0) (2025-09-01)
 
 
