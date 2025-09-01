@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.1.0](https://github.com/LeChef318/M324-Projektarbeit/compare/v1.0.0...v1.1.0) (2025-09-01)
+
+
+### Features
+
+* update display text ([2522655](https://github.com/LeChef318/M324-Projektarbeit/commit/252265522d473c7852e1f8b076a09654276dbe5d))
+* update display text ([42cb106](https://github.com/LeChef318/M324-Projektarbeit/commit/42cb106338df3c5906c27478a76855ea1082fb07))
+
 ## 1.0.0 (2025-08-27)
 
 
