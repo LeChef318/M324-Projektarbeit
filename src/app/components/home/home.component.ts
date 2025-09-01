@@ -8,36 +8,31 @@ import { Component } from '@angular/core';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent {
-  placeholderItems = [
+  features = [
     {
-      icon: '🎨',
-      title: 'Creative Placeholder',
-      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus lacinia odio vitae vestibulum.'
+      icon: '💱',
+      title: 'Daily Updated Exchange Rates (WIP)',
+      description: 'Get the most current exchange rates updated daily from the European Central Bank.'
     },
     {
-      icon: '🌟',
-      title: 'Stellar Content',
-      description: 'Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.'
+      icon: '🌍',
+      title: '30 Major World Currencies (WIP)',
+      description: 'Convert between all major world currencies including USD, EUR, GBP, JPY, and other ECB-tracked currencies.'
     },
     {
-      icon: '🚀',
-      title: 'Rocket Powered',
-      description: 'Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'
+      icon: '🔄',
+      title: 'Instant Conversion (WIP)',
+      description: 'Lightning-fast currency calculations with swap functionality and popular conversion shortcuts.'
     },
     {
-      icon: '🎯',
-      title: 'Target Achieved',
-      description: 'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat.'
+      icon: '📊',
+      title: 'Exchange Rate History (WIP)',
+      description: 'View detailed exchange rate tables and track currency trends with our comprehensive data display.'
     },
     {
-      icon: '🌈',
-      title: 'Rainbow Magic',
-      description: 'Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit.'
-    },
-    {
-      icon: '⚡',
-      title: 'Lightning Fast',
-      description: 'At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium.'
+      icon: '📈',
+      title: 'Interactive Currency Graphs (WIP)',
+      description: 'Visualize currency trends with beautiful interactive charts. Select any currency pair and date range to see historical exchange rate patterns.'
     }
   ];
 }
