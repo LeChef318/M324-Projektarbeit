@@ -13,7 +13,11 @@
       },
       "plugins": [
         "@angular-eslint/eslint-plugin",
-        "@typescript-eslint"
+        "@typescript-eslint",
+        "prettier"
+      ],
+      "extends": [
+        "prettier"
       ],
       "rules": {
         "@angular-eslint/component-class-suffix": "error",
@@ -43,16 +47,19 @@
         "@typescript-eslint/no-explicit-any": "warn",
         "@typescript-eslint/no-unused-vars": ["error", { "argsIgnorePattern": "^_" }],
         "prefer-const": "error",
-        "no-var": "error"
+        "no-var": "error",
+        "prettier/prettier": "error"
       }
     },
     {
       "files": ["*.html"],
       "parser": "@angular-eslint/template-parser",
-      "plugins": ["@angular-eslint/template"],
+      "plugins": ["@angular-eslint/template", "prettier"],
+      "extends": ["prettier"],
       "rules": {
         "@angular-eslint/template/banana-in-box": "error",
-        "@angular-eslint/template/no-negated-async": "error"
+        "@angular-eslint/template/no-negated-async": "error",
+        "prettier/prettier": "error"
       }
     }
   ]

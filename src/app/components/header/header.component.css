@@ -69,19 +69,19 @@
   .header-container {
     padding: 0 1rem;
   }
-  
+
   .logo {
     font-size: 1.5rem;
   }
-  
+
   .tagline {
     font-size: 0.8rem;
   }
-  
+
   .navigation-space {
     max-width: 100%;
   }
-  
+
   .nav-placeholder {
     max-width: 300px;
   }
@@ -91,11 +91,11 @@
   .logo {
     font-size: 1.3rem;
   }
-  
+
   .tagline {
     font-size: 0.75rem;
   }
-  
+
   .nav-text {
     font-size: 0.75rem;
   }
