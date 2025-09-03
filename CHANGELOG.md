@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.3.1](https://github.com/LeChef318/M324-Projektarbeit/compare/v1.3.0...v1.3.1) (2025-09-03)
+
+
+### Bug Fixes
+
+* added prettier linting rules ([a684f2d](https://github.com/LeChef318/M324-Projektarbeit/commit/a684f2da235726cd938b6a777879291b2bb8d8e7))
+
 ## [1.3.0](https://github.com/LeChef318/M324-Projektarbeit/compare/v1.2.0...v1.3.0) (2025-09-01)
 
 
