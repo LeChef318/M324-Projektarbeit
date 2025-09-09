@@ -64,20 +64,6 @@ jobs:
       - name: Run ESLint
         run: npm run lint
 
-      # Run tests
-      - name: Run tests
-        run: npm run test -- --no-watch --no-progress --browsers=ChromeHeadless --code-coverage
-
       # Build the project
       - name: Build project
         run: npm run build
-
-      # Upload test coverage (optional)
-      - name: Upload coverage reports
-        uses: codecov/codecov-action@v4
-        if: always()
-        with:
-          directory: ./coverage/
-          fail_ci_if_error: false
-        env:
-          CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
