@@ -94,7 +94,7 @@ Das verwendete Ruleset ist das Standard-Ruleset von Angular und wurde von uns ni
 ### Hinweise zur Nutzung
 
 - **Zeitzonen**: Die API speichert Daten in UTC; das „heutige“ Datum kann je nach Zeitzone variieren.
-- **Stabilität**: Kurse für den aktuellen Tag können sich bis zur täglichen VeröDie ffentlichung noch ändern.
+- **Stabilität**: Kurse für den aktuellen Tag können sich bis zur täglichen Veröffentlichung noch ändern.
 - **Performance**: Mit `symbols` auf benötigte Währungen beschränken, um Antwortgröße und Latenz zu reduzieren.
 
 ### Qualität und Erweiterbarkeit
