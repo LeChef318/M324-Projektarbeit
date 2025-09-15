@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.4.0](https://github.com/LeChef318/M324-Projektarbeit/compare/v1.3.1...v1.4.0) (2025-09-15)
+
+
+### Features
+
+* add navbar ([#59](https://github.com/LeChef318/M324-Projektarbeit/issues/59)) ([9e57a2a](https://github.com/LeChef318/M324-Projektarbeit/commit/9e57a2a5862d256a8a99cbeb831d4161dfaf2f85))
+
 ## [1.3.1](https://github.com/LeChef318/M324-Projektarbeit/compare/v1.3.0...v1.3.1) (2025-09-03)
 
 
