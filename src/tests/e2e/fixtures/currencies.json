@@ -1,0 +1,71 @@
+{
+  "supportedCurrencies": [
+    "EUR",
+    "USD",
+    "GBP",
+    "JPY",
+    "CHF",
+    "CAD",
+    "AUD",
+    "CNY",
+    "SEK",
+    "NOK",
+    "DKK",
+    "PLN",
+    "CZK",
+    "HUF",
+    "BGN",
+    "RON",
+    "HRK",
+    "RUB",
+    "TRY",
+    "BRL",
+    "MXN",
+    "SGD",
+    "HKD",
+    "NZD",
+    "ZAR",
+    "KRW",
+    "INR",
+    "THB",
+    "MYR",
+    "IDR"
+  ],
+  "baseCurrency": "EUR",
+  "sampleRates": {
+    "USD": 1.0934,
+    "GBP": 0.8312,
+    "JPY": 161.46,
+    "CHF": 0.9456,
+    "CAD": 1.4821,
+    "AUD": 1.6234
+  },
+  "testAmounts": [1, 10, 100, 1000, 10000],
+  "expectedFeatures": [
+    {
+      "title": "Daily Updated Exchange Rates (WIP)",
+      "icon": "💱",
+      "description": "Get the most current exchange rates updated daily from the European Central Bank."
+    },
+    {
+      "title": "30 Major World Currencies (WIP)",
+      "icon": "🌍",
+      "description": "Convert between all major world currencies including USD, EUR, GBP, JPY, and other ECB-tracked currencies."
+    },
+    {
+      "title": "Instant Conversion (WIP)",
+      "icon": "🔄",
+      "description": "Lightning-fast currency calculations with swap functionality and popular conversion shortcuts."
+    },
+    {
+      "title": "Exchange Rate History (WIP)",
+      "icon": "📊",
+      "description": "View detailed exchange rate tables and track currency trends with our comprehensive data display."
+    },
+    {
+      "title": "Interactive Currency Graphs (WIP)",
+      "icon": "📈",
+      "description": "Visualize currency trends with beautiful interactive charts. Select any currency pair and date range to see historical exchange rate patterns."
+    }
+  ]
+}

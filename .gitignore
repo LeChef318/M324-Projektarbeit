@@ -46,3 +46,7 @@ Thumbs.db
 
 # Angular specific
 .angular/cache
+
+# E2E test artifacts
+src/tests/e2e/screenshots/
+src/tests/e2e/videos/
