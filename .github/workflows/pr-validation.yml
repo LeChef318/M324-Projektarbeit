@@ -2,7 +2,10 @@ name: PR Validation
 
 on:
   pull_request:
-    types: [opened, edited, synchronize]
+    types: [opened, edited, synchronize, reopened]
+  workflow_run:
+    workflows: ["Release Please"]
+    types: [completed]
 
 permissions:
   pull-requests: write
@@ -12,10 +15,13 @@ permissions:
 jobs:
   validate:
     runs-on: ubuntu-latest
+    # Only run this job for pull_request events, not workflow_run
+    if: github.event_name == 'pull_request'
     
     steps:
-      # Validate PR title
+      # Validate PR title (skip for release-please PRs)
       - name: Validate PR Title
+        if: ${{ !contains(github.head_ref, 'release-please') }}
         uses: amannn/action-semantic-pull-request@v5
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -40,3 +46,33 @@ jobs:
             doesn't start with an uppercase character.
           wip: true
           validateSingleCommit: true
+          
+      # Always pass validation for release-please PRs
+      - name: Skip validation for release PRs
+        if: ${{ contains(github.head_ref, 'release-please') }}
+        run: echo "Skipping PR title validation for release-please PR"
+
+  lint:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          # For workflow_run events, we need to checkout the PR head
+          ref: ${{ github.event_name == 'workflow_run' && github.event.workflow_run.head_branch || github.head_ref }}
+        
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+          
+      - name: Install dependencies
+        run: npm ci
+        
+      - name: Run ESLint
+        run: npm run lint
+        
+      - name: Check Prettier formatting
+        run: npm run format:check

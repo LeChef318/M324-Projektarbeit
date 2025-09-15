@@ -1,0 +1,18 @@
+<nav class="navbar">
+  <ul class="nav-list">
+    <li class="nav-item" *ngFor="let item of navItems">
+      <a
+        [routerLink]="item.route"
+        routerLinkActive="active"
+        [routerLinkActiveOptions]="{ exact: item.route === '/' }"
+        class="nav-link"
+        [class.wip]="item.isWip"
+        [attr.aria-disabled]="item.isWip"
+        (click)="item.isWip && $event.preventDefault()"
+      >
+        {{ item.label }}
+        <span class="wip-badge" *ngIf="item.isWip">WIP</span>
+      </a>
+    </li>
+  </ul>
+</nav>
