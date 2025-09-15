@@ -1,15 +1,15 @@
 .footer {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: var(--gradient-primary);
   color: white;
-  padding: 20px 0;
+  padding: var(--spacing-xl) 0;
   text-align: center;
   margin-top: auto;
 }
 
 .footer-content {
-  max-width: 1200px;
+  max-width: var(--container-xl);
   margin: 0 auto;
-  padding: 0 20px;
+  padding: 0 var(--spacing-xl);
 }
 
 .footer p {

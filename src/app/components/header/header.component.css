@@ -1,21 +1,21 @@
 .header {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: var(--gradient-primary);
   color: white;
-  padding: 1rem 0;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  padding: var(--spacing-md) 0;
+  box-shadow: var(--shadow-sm);
   position: sticky;
   top: 0;
   z-index: 100;
 }
 
 .header-container {
-  max-width: 1200px;
+  max-width: var(--container-xl);
   margin: 0 auto;
-  padding: 0 2rem;
+  padding: 0 var(--spacing-xl);
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 1rem;
+  gap: var(--spacing-md);
 }
 
 .logo-section {
@@ -23,7 +23,7 @@
   flex-direction: column;
   align-items: center;
   text-align: center;
-  gap: 0.25rem;
+  gap: var(--spacing-xs);
 }
 
 .logo {
@@ -53,7 +53,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 0.5rem 1rem;
+  padding: var(--spacing-sm) var(--spacing-md);
   border: 2px dashed rgba(255, 255, 255, 0.3);
   border-radius: 8px;
   width: 100%;
@@ -67,7 +67,7 @@
 
 @media (max-width: 768px) {
   .header-container {
-    padding: 0 1rem;
+    padding: 0 var(--spacing-md);
   }
 
   .logo {
