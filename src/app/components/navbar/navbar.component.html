@@ -1,10 +1,10 @@
 <nav class="navbar">
   <ul class="nav-list">
     <li class="nav-item" *ngFor="let item of navItems">
-      <a 
-        [routerLink]="item.route" 
+      <a
+        [routerLink]="item.route"
         routerLinkActive="active"
-        [routerLinkActiveOptions]="{exact: item.route === '/'}"
+        [routerLinkActiveOptions]="{ exact: item.route === '/' }"
         class="nav-link"
         [class.wip]="item.isWip"
         [attr.aria-disabled]="item.isWip"

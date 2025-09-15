@@ -69,12 +69,12 @@
   .nav-list {
     gap: var(--spacing-xs);
   }
-  
+
   .nav-link {
     padding: var(--spacing-xs) var(--spacing-sm);
     font-size: 0.85rem;
   }
-  
+
   .wip-badge {
     font-size: 0.65rem;
     padding: 1px 4px;
@@ -87,26 +87,26 @@
     overflow-x: auto;
     padding-bottom: var(--spacing-xs);
   }
-  
+
   .nav-item {
     flex-shrink: 0;
   }
-  
+
   .nav-link {
     font-size: 0.8rem;
     padding: var(--spacing-xs) var(--spacing-sm);
   }
-  
+
   /* Custom scrollbar for mobile */
   .nav-list::-webkit-scrollbar {
     height: 3px;
   }
-  
+
   .nav-list::-webkit-scrollbar-track {
     background: rgba(255, 255, 255, 0.1);
     border-radius: 3px;
   }
-  
+
   .nav-list::-webkit-scrollbar-thumb {
     background: rgba(255, 255, 255, 0.3);
     border-radius: 3px;

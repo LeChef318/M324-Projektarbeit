@@ -1,9 +1,6 @@
 .header {
   background: var(--gradient-primary);
-  background: var(--gradient-primary);
   color: white;
-  padding: var(--spacing-md) 0;
-  box-shadow: var(--shadow-sm);
   padding: var(--spacing-md) 0;
   box-shadow: var(--shadow-sm);
   position: sticky;
@@ -13,14 +10,11 @@
 
 .header-container {
   max-width: var(--container-xl);
-  max-width: var(--container-xl);
   margin: 0 auto;
-  padding: 0 var(--spacing-xl);
   padding: 0 var(--spacing-xl);
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: var(--spacing-md);
   gap: var(--spacing-md);
 }
 
@@ -29,7 +23,6 @@
   flex-direction: column;
   align-items: center;
   text-align: center;
-  gap: var(--spacing-xs);
   gap: var(--spacing-xs);
 }
 
@@ -53,11 +46,11 @@
   justify-content: center;
   width: 100%;
   max-width: 800px;
+  max-width: 800px;
 }
 
 @media (max-width: 768px) {
   .header-container {
-    padding: 0 var(--spacing-md);
     padding: 0 var(--spacing-md);
   }
 
@@ -82,5 +75,4 @@
   .tagline {
     font-size: 0.75rem;
   }
-
 }
