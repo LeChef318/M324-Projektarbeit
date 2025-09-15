@@ -46,7 +46,7 @@ Cypress.Commands.add('shouldContainText', (selector: string, text: string) => {
 });
 
 Cypress.Commands.add('waitForAngular', () => {
-  cy.window().then((win: any) => {
+  cy.window().then((win: Window & typeof globalThis) => {
     return new Cypress.Promise(resolve => {
       // Wait for Angular to be ready
       const checkAngular = () => {

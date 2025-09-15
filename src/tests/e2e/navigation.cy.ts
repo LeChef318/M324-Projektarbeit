@@ -54,8 +54,13 @@ describe('Navigation E2E Tests', () => {
     cy.get('app-footer').should('be.visible');
 
     // Test that WIP links exist but don't navigate (preventDefault)
-    const wipRoutes = ['Currency Calculator', 'Currency List', 'Historical Values', 'Graphical Trends'];
-    
+    const wipRoutes = [
+      'Currency Calculator',
+      'Currency List',
+      'Historical Values',
+      'Graphical Trends',
+    ];
+
     wipRoutes.forEach(routeText => {
       cy.get('app-navbar').within(() => {
         cy.contains('a', routeText).should('be.visible');

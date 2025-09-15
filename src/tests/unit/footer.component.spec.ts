@@ -34,7 +34,6 @@ describe('FooterComponent', () => {
 
   it('should display current year in template', () => {
     const compiled = fixture.nativeElement as HTMLElement;
-    const yearElement = compiled.querySelector('.year, .copyright');
 
     // Ensure we have some footer content that includes the year
     const footerText = compiled.textContent || '';

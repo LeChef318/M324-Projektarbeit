@@ -1,6 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { provideRouter } from '@angular/router';
-import { By } from '@angular/platform-browser';
 import {
   NavbarComponent,
   NavItem,
@@ -86,7 +85,7 @@ describe('NavbarComponent', () => {
   it('should have correct router links', () => {
     const compiled = fixture.nativeElement as HTMLElement;
     const linkElements = compiled.querySelectorAll('a.nav-link');
-    
+
     // Ensure we have navigation links matching our nav items
     expect(linkElements.length).toBe(component.navItems.length);
 
