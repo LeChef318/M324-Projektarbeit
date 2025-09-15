@@ -117,6 +117,14 @@ Quelle: Frankfurter API – siehe Dokumentation unter [frankfurter.dev](https://
 - **Linting**: ESLint
 - **Testing**: Jasmin & Karma
 
+## Design
+- **Color Grading**: Blau/Violet
+- **Hintergrundfarbe**: Weiss
+- **Darktheme**: Nein
+- **Schriftartv: Default Schriftart nicht serif
+- **Responsive Design**: Ja
+- **Sprache**: Englisch
+
 ## BBZBL Modul 324: Web-Applikation Template
 
 Dieses Template dient als Vorlage zum Starten eures Projekts.
