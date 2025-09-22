@@ -17,7 +17,7 @@ export interface ConversionResult {
 }
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class CurrencyService {
   private readonly baseUrl = 'https://api.frankfurter.dev/v1';
@@ -31,13 +31,17 @@ export class CurrencyService {
    * @param amount Amount to convert
    * @returns Promise with conversion result
    */
-  async convertCurrency(from: string, to: string, amount: number): Promise<ConversionResult> {
+  async convertCurrency(
+    from: string,
+    to: string,
+    amount: number
+  ): Promise<ConversionResult> {
     try {
       const url = `${this.baseUrl}/latest?base=${from}&symbols=${to}`;
       const response = await firstValueFrom(
-        this.http.get<ExchangeRateResponse>(url).pipe(
-          catchError(this.handleError)
-        )
+        this.http
+          .get<ExchangeRateResponse>(url)
+          .pipe(catchError(this.handleError))
       );
 
       const rate = response.rates[to];
@@ -46,11 +50,13 @@ export class CurrencyService {
       return {
         convertedAmount,
         rate,
-        date: response.date
+        date: response.date,
       };
     } catch (error) {
       console.error('Currency conversion failed:', error);
-      throw new Error('Failed to convert currency. Please check your internet connection and try again.');
+      throw new Error(
+        'Failed to convert currency. Please check your internet connection and try again.'
+      );
     }
   }
 
@@ -61,9 +67,9 @@ export class CurrencyService {
    */
   getLatestRates(base: string = 'EUR'): Observable<ExchangeRateResponse> {
     const url = `${this.baseUrl}/latest?base=${base}`;
-    return this.http.get<ExchangeRateResponse>(url).pipe(
-      catchError(this.handleError)
-    );
+    return this.http
+      .get<ExchangeRateResponse>(url)
+      .pipe(catchError(this.handleError));
   }
 
   /**
@@ -73,14 +79,18 @@ export class CurrencyService {
    * @param symbols Target currencies (optional)
    * @returns Observable with historical rates
    */
-  getHistoricalRates(date: string, base: string = 'EUR', symbols?: string[]): Observable<ExchangeRateResponse> {
+  getHistoricalRates(
+    date: string,
+    base: string = 'EUR',
+    symbols?: string[]
+  ): Observable<ExchangeRateResponse> {
     let url = `${this.baseUrl}/${date}?base=${base}`;
     if (symbols && symbols.length > 0) {
       url += `&symbols=${symbols.join(',')}`;
     }
-    return this.http.get<ExchangeRateResponse>(url).pipe(
-      catchError(this.handleError)
-    );
+    return this.http
+      .get<ExchangeRateResponse>(url)
+      .pipe(catchError(this.handleError));
   }
 
   /**
@@ -91,14 +101,17 @@ export class CurrencyService {
    * @param symbols Target currencies (optional)
    * @returns Observable with time series data
    */
-  getTimeSeries(startDate: string, endDate: string, base: string = 'EUR', symbols?: string[]): Observable<any> {
+  getTimeSeries(
+    startDate: string,
+    endDate: string,
+    base: string = 'EUR',
+    symbols?: string[]
+  ): Observable<{ [date: string]: { [currency: string]: number } }> {
     let url = `${this.baseUrl}/${startDate}..${endDate}?base=${base}`;
     if (symbols && symbols.length > 0) {
       url += `&symbols=${symbols.join(',')}`;
     }
-    return this.http.get(url).pipe(
-      catchError(this.handleError)
-    );
+    return this.http.get(url).pipe(catchError(this.handleError));
   }
 
   /**
@@ -108,21 +121,50 @@ export class CurrencyService {
   async getSupportedCurrencies(): Promise<string[]> {
     try {
       const response = await firstValueFrom(
-        this.http.get<{ [key: string]: string }>(`${this.baseUrl}/currencies`).pipe(
-          catchError(this.handleError)
-        )
+        this.http
+          .get<{ [key: string]: string }>(`${this.baseUrl}/currencies`)
+          .pipe(catchError(this.handleError))
       );
-      
+
       // Extract currency codes and sort alphabetically
       return Object.keys(response).sort();
     } catch (error) {
       console.error('Failed to fetch supported currencies:', error);
       // Fallback to hardcoded list if API fails
       return [
-        'AUD', 'BGN', 'BRL', 'CAD', 'CHF', 'CNY', 'CZK', 'DKK', 'EUR', 'GBP',
-        'HKD', 'HRK', 'HUF', 'IDR', 'ILS', 'INR', 'ISK', 'JPY', 'KRW', 'MXN',
-        'MYR', 'NOK', 'NZD', 'PHP', 'PLN', 'RON', 'RUB', 'SEK', 'SGD', 'THB',
-        'TRY', 'USD', 'ZAR'
+        'AUD',
+        'BGN',
+        'BRL',
+        'CAD',
+        'CHF',
+        'CNY',
+        'CZK',
+        'DKK',
+        'EUR',
+        'GBP',
+        'HKD',
+        'HRK',
+        'HUF',
+        'IDR',
+        'ILS',
+        'INR',
+        'ISK',
+        'JPY',
+        'KRW',
+        'MXN',
+        'MYR',
+        'NOK',
+        'NZD',
+        'PHP',
+        'PLN',
+        'RON',
+        'RUB',
+        'SEK',
+        'SGD',
+        'THB',
+        'TRY',
+        'USD',
+        'ZAR',
       ].sort();
     }
   }
@@ -134,11 +176,11 @@ export class CurrencyService {
   async getSupportedCurrenciesWithNames(): Promise<{ [key: string]: string }> {
     try {
       const response = await firstValueFrom(
-        this.http.get<{ [key: string]: string }>(`${this.baseUrl}/currencies`).pipe(
-          catchError(this.handleError)
-        )
+        this.http
+          .get<{ [key: string]: string }>(`${this.baseUrl}/currencies`)
+          .pipe(catchError(this.handleError))
       );
-      
+
       return response;
     } catch (error) {
       console.error('Failed to fetch supported currencies with names:', error);
@@ -153,39 +195,39 @@ export class CurrencyService {
    */
   getCurrencyNames(): { [key: string]: string } {
     return {
-      'AUD': 'Australian Dollar',
-      'BGN': 'Bulgarian Lev',
-      'BRL': 'Brazilian Real',
-      'CAD': 'Canadian Dollar',
-      'CHF': 'Swiss Franc',
-      'CNY': 'Chinese Yuan',
-      'CZK': 'Czech Koruna',
-      'DKK': 'Danish Krone',
-      'EUR': 'Euro',
-      'GBP': 'British Pound',
-      'HKD': 'Hong Kong Dollar',
-      'HRK': 'Croatian Kuna',
-      'HUF': 'Hungarian Forint',
-      'IDR': 'Indonesian Rupiah',
-      'ILS': 'Israeli Shekel',
-      'INR': 'Indian Rupee',
-      'ISK': 'Icelandic Krona',
-      'JPY': 'Japanese Yen',
-      'KRW': 'South Korean Won',
-      'MXN': 'Mexican Peso',
-      'MYR': 'Malaysian Ringgit',
-      'NOK': 'Norwegian Krone',
-      'NZD': 'New Zealand Dollar',
-      'PHP': 'Philippine Peso',
-      'PLN': 'Polish Zloty',
-      'RON': 'Romanian Leu',
-      'RUB': 'Russian Ruble',
-      'SEK': 'Swedish Krona',
-      'SGD': 'Singapore Dollar',
-      'THB': 'Thai Baht',
-      'TRY': 'Turkish Lira',
-      'USD': 'US Dollar',
-      'ZAR': 'South African Rand'
+      AUD: 'Australian Dollar',
+      BGN: 'Bulgarian Lev',
+      BRL: 'Brazilian Real',
+      CAD: 'Canadian Dollar',
+      CHF: 'Swiss Franc',
+      CNY: 'Chinese Yuan',
+      CZK: 'Czech Koruna',
+      DKK: 'Danish Krone',
+      EUR: 'Euro',
+      GBP: 'British Pound',
+      HKD: 'Hong Kong Dollar',
+      HRK: 'Croatian Kuna',
+      HUF: 'Hungarian Forint',
+      IDR: 'Indonesian Rupiah',
+      ILS: 'Israeli Shekel',
+      INR: 'Indian Rupee',
+      ISK: 'Icelandic Krona',
+      JPY: 'Japanese Yen',
+      KRW: 'South Korean Won',
+      MXN: 'Mexican Peso',
+      MYR: 'Malaysian Ringgit',
+      NOK: 'Norwegian Krone',
+      NZD: 'New Zealand Dollar',
+      PHP: 'Philippine Peso',
+      PLN: 'Polish Zloty',
+      RON: 'Romanian Leu',
+      RUB: 'Russian Ruble',
+      SEK: 'Swedish Krona',
+      SGD: 'Singapore Dollar',
+      THB: 'Thai Baht',
+      TRY: 'Turkish Lira',
+      USD: 'US Dollar',
+      ZAR: 'South African Rand',
     };
   }
 
@@ -204,7 +246,8 @@ export class CurrencyService {
       // Server-side error
       switch (error.status) {
         case 0:
-          errorMessage = 'Network error. Please check your internet connection.';
+          errorMessage =
+            'Network error. Please check your internet connection.';
           break;
         case 400:
           errorMessage = 'Invalid request. Please check your input parameters.';

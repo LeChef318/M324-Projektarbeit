@@ -1,20 +1,26 @@
 import { TestBed } from '@angular/core/testing';
-import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
-import { CurrencyService, ExchangeRateResponse } from '../../app/services/currency.service';
+import {
+  HttpClientTestingModule,
+  HttpTestingController,
+} from '@angular/common/http/testing';
+import {
+  CurrencyService,
+  ExchangeRateResponse,
+} from '../../app/services/currency.service';
 
 describe('CurrencyService', () => {
   let service: CurrencyService;
   let httpMock: HttpTestingController;
-  let originalConsoleError: any;
+  let originalConsoleError: typeof console.error;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [HttpClientTestingModule],
-      providers: [CurrencyService]
+      providers: [CurrencyService],
     });
     service = TestBed.inject(CurrencyService);
     httpMock = TestBed.inject(HttpTestingController);
-    
+
     // Suppress console errors during error testing scenarios
     originalConsoleError = console.error;
     console.error = jasmine.createSpy('console.error');
@@ -36,12 +42,14 @@ describe('CurrencyService', () => {
         amount: 1,
         base: 'EUR',
         date: '2024-01-01',
-        rates: { USD: 1.1 }
+        rates: { USD: 1.1 },
       };
 
       const conversionPromise = service.convertCurrency('EUR', 'USD', 100);
 
-      const req = httpMock.expectOne('https://api.frankfurter.dev/v1/latest?base=EUR&symbols=USD');
+      const req = httpMock.expectOne(
+        'https://api.frankfurter.dev/v1/latest?base=EUR&symbols=USD'
+      );
       expect(req.request.method).toBe('GET');
       req.flush(mockResponse);
 
@@ -50,14 +58,16 @@ describe('CurrencyService', () => {
       expect(result).toEqual({
         convertedAmount: 110,
         rate: 1.1,
-        date: '2024-01-01'
+        date: '2024-01-01',
       });
     });
 
     it('should handle HTTP errors', async () => {
       const conversionPromise = service.convertCurrency('EUR', 'USD', 100);
 
-      const req = httpMock.expectOne('https://api.frankfurter.dev/v1/latest?base=EUR&symbols=USD');
+      const req = httpMock.expectOne(
+        'https://api.frankfurter.dev/v1/latest?base=EUR&symbols=USD'
+      );
       req.error(new ErrorEvent('Network error'));
 
       try {
@@ -65,7 +75,9 @@ describe('CurrencyService', () => {
         fail('Expected error to be thrown');
       } catch (error) {
         expect(error).toBeInstanceOf(Error);
-        expect((error as Error).message).toContain('Failed to convert currency');
+        expect((error as Error).message).toContain(
+          'Failed to convert currency'
+        );
       }
     });
 
@@ -74,12 +86,14 @@ describe('CurrencyService', () => {
         amount: 1,
         base: 'EUR',
         date: '2024-01-01',
-        rates: { USD: 1.123456 }
+        rates: { USD: 1.123456 },
       };
 
       const conversionPromise = service.convertCurrency('EUR', 'USD', 1);
 
-      const req = httpMock.expectOne('https://api.frankfurter.dev/v1/latest?base=EUR&symbols=USD');
+      const req = httpMock.expectOne(
+        'https://api.frankfurter.dev/v1/latest?base=EUR&symbols=USD'
+      );
       req.flush(mockResponse);
 
       const result = await conversionPromise;
@@ -94,14 +108,16 @@ describe('CurrencyService', () => {
         amount: 1,
         base: 'EUR',
         date: '2024-01-01',
-        rates: { USD: 1.1, GBP: 0.9 }
+        rates: { USD: 1.1, GBP: 0.9 },
       };
 
       service.getLatestRates().subscribe(response => {
         expect(response).toEqual(mockResponse);
       });
 
-      const req = httpMock.expectOne('https://api.frankfurter.dev/v1/latest?base=EUR');
+      const req = httpMock.expectOne(
+        'https://api.frankfurter.dev/v1/latest?base=EUR'
+      );
       expect(req.request.method).toBe('GET');
       req.flush(mockResponse);
     });
@@ -111,14 +127,16 @@ describe('CurrencyService', () => {
         amount: 1,
         base: 'USD',
         date: '2024-01-01',
-        rates: { EUR: 0.9, GBP: 0.8 }
+        rates: { EUR: 0.9, GBP: 0.8 },
       };
 
       service.getLatestRates('USD').subscribe(response => {
         expect(response).toEqual(mockResponse);
       });
 
-      const req = httpMock.expectOne('https://api.frankfurter.dev/v1/latest?base=USD');
+      const req = httpMock.expectOne(
+        'https://api.frankfurter.dev/v1/latest?base=USD'
+      );
       req.flush(mockResponse);
     });
   });
@@ -129,21 +147,27 @@ describe('CurrencyService', () => {
         amount: 1,
         base: 'EUR',
         date: '2023-12-01',
-        rates: { USD: 1.08, GBP: 0.87 }
+        rates: { USD: 1.08, GBP: 0.87 },
       };
 
       service.getHistoricalRates('2023-12-01').subscribe(response => {
         expect(response).toEqual(mockResponse);
       });
 
-      const req = httpMock.expectOne('https://api.frankfurter.dev/v1/2023-12-01?base=EUR');
+      const req = httpMock.expectOne(
+        'https://api.frankfurter.dev/v1/2023-12-01?base=EUR'
+      );
       req.flush(mockResponse);
     });
 
     it('should fetch historical rates with symbols', () => {
-      service.getHistoricalRates('2023-12-01', 'EUR', ['USD', 'GBP']).subscribe();
+      service
+        .getHistoricalRates('2023-12-01', 'EUR', ['USD', 'GBP'])
+        .subscribe();
 
-      const req = httpMock.expectOne('https://api.frankfurter.dev/v1/2023-12-01?base=EUR&symbols=USD,GBP');
+      const req = httpMock.expectOne(
+        'https://api.frankfurter.dev/v1/2023-12-01?base=EUR&symbols=USD,GBP'
+      );
       expect(req.request.method).toBe('GET');
       req.flush({});
     });
@@ -153,15 +177,21 @@ describe('CurrencyService', () => {
     it('should fetch time series data', () => {
       service.getTimeSeries('2023-12-01', '2023-12-31').subscribe();
 
-      const req = httpMock.expectOne('https://api.frankfurter.dev/v1/2023-12-01..2023-12-31?base=EUR');
+      const req = httpMock.expectOne(
+        'https://api.frankfurter.dev/v1/2023-12-01..2023-12-31?base=EUR'
+      );
       expect(req.request.method).toBe('GET');
       req.flush({});
     });
 
     it('should fetch time series data with symbols', () => {
-      service.getTimeSeries('2023-12-01', '2023-12-31', 'USD', ['EUR', 'GBP']).subscribe();
+      service
+        .getTimeSeries('2023-12-01', '2023-12-31', 'USD', ['EUR', 'GBP'])
+        .subscribe();
 
-      const req = httpMock.expectOne('https://api.frankfurter.dev/v1/2023-12-01..2023-12-31?base=USD&symbols=EUR,GBP');
+      const req = httpMock.expectOne(
+        'https://api.frankfurter.dev/v1/2023-12-01..2023-12-31?base=USD&symbols=EUR,GBP'
+      );
       req.flush({});
     });
   });
@@ -169,15 +199,17 @@ describe('CurrencyService', () => {
   describe('getSupportedCurrencies', () => {
     it('should fetch currencies from API successfully', async () => {
       const mockResponse = {
-        'AUD': 'Australian Dollar',
-        'CHF': 'Swiss Franc',
-        'EUR': 'Euro',
-        'USD': 'US Dollar'
+        AUD: 'Australian Dollar',
+        CHF: 'Swiss Franc',
+        EUR: 'Euro',
+        USD: 'US Dollar',
       };
 
       const currenciesPromise = service.getSupportedCurrencies();
 
-      const req = httpMock.expectOne('https://api.frankfurter.dev/v1/currencies');
+      const req = httpMock.expectOne(
+        'https://api.frankfurter.dev/v1/currencies'
+      );
       expect(req.request.method).toBe('GET');
       req.flush(mockResponse);
 
@@ -189,7 +221,9 @@ describe('CurrencyService', () => {
     it('should handle API errors and return fallback currencies', async () => {
       const currenciesPromise = service.getSupportedCurrencies();
 
-      const req = httpMock.expectOne('https://api.frankfurter.dev/v1/currencies');
+      const req = httpMock.expectOne(
+        'https://api.frankfurter.dev/v1/currencies'
+      );
       req.error(new ErrorEvent('Network error'));
 
       const result = await currenciesPromise;
@@ -205,15 +239,17 @@ describe('CurrencyService', () => {
   describe('getSupportedCurrenciesWithNames', () => {
     it('should fetch currencies with names from API successfully', async () => {
       const mockResponse = {
-        'AUD': 'Australian Dollar',
-        'CHF': 'Swiss Franc',
-        'EUR': 'Euro',
-        'USD': 'US Dollar'
+        AUD: 'Australian Dollar',
+        CHF: 'Swiss Franc',
+        EUR: 'Euro',
+        USD: 'US Dollar',
       };
 
       const currenciesPromise = service.getSupportedCurrenciesWithNames();
 
-      const req = httpMock.expectOne('https://api.frankfurter.dev/v1/currencies');
+      const req = httpMock.expectOne(
+        'https://api.frankfurter.dev/v1/currencies'
+      );
       expect(req.request.method).toBe('GET');
       req.flush(mockResponse);
 
@@ -225,7 +261,9 @@ describe('CurrencyService', () => {
     it('should handle API errors and return fallback currency names', async () => {
       const currenciesPromise = service.getSupportedCurrenciesWithNames();
 
-      const req = httpMock.expectOne('https://api.frankfurter.dev/v1/currencies');
+      const req = httpMock.expectOne(
+        'https://api.frankfurter.dev/v1/currencies'
+      );
       req.error(new ErrorEvent('Network error'));
 
       const result = await currenciesPromise;
@@ -240,7 +278,7 @@ describe('CurrencyService', () => {
   describe('getCurrencyNames', () => {
     it('should return object with currency names', () => {
       const names = service.getCurrencyNames();
-      
+
       expect(typeof names).toBe('object');
       expect(names['EUR']).toBe('Euro');
       expect(names['USD']).toBe('US Dollar');

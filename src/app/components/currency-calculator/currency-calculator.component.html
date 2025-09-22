@@ -2,7 +2,8 @@
   <div class="calculator-header">
     <h1 class="calculator-title">Currency Calculator</h1>
     <p class="calculator-description">
-      Convert currencies with real-time exchange rates from the European Central Bank
+      Convert currencies with real-time exchange rates from the European Central
+      Bank
     </p>
   </div>
 
@@ -38,7 +39,9 @@
             (change)="onCurrencyChange()"
             [disabled]="currenciesLoading"
           >
-            <option *ngIf="currenciesLoading" value="">Loading currencies...</option>
+            <option *ngIf="currenciesLoading" value="">
+              Loading currencies...
+            </option>
             <option *ngFor="let currency of currencies" [value]="currency">
               {{ currency }} - {{ currencyNames[currency] || currency }}
             </option>
@@ -69,7 +72,9 @@
             (change)="onCurrencyChange()"
             [disabled]="currenciesLoading"
           >
-            <option *ngIf="currenciesLoading" value="">Loading currencies...</option>
+            <option *ngIf="currenciesLoading" value="">
+              Loading currencies...
+            </option>
             <option *ngFor="let currency of currencies" [value]="currency">
               {{ currency }} - {{ currencyNames[currency] || currency }}
             </option>
@@ -98,16 +103,24 @@
     <div *ngIf="result && !error" class="result-container">
       <div class="result-main">
         <div class="result-amount">
-          <span class="original-amount">{{ amount | number:'1.2-2' }} {{ fromCurrency }}</span>
+          <span class="original-amount"
+            >{{ amount | number: '1.2-2' }} {{ fromCurrency }}</span
+          >
           <span class="equals">=</span>
-          <span class="converted-amount">{{ result.convertedAmount | number:'1.2-2' }} {{ toCurrency }}</span>
+          <span class="converted-amount"
+            >{{ result.convertedAmount | number: '1.2-2' }}
+            {{ toCurrency }}</span
+          >
         </div>
       </div>
-      
+
       <div class="result-details">
         <div class="exchange-rate">
           <span class="rate-label">Exchange Rate:</span>
-          <span class="rate-value">1 {{ fromCurrency }} = {{ result.rate | number:'1.4-4' }} {{ toCurrency }}</span>
+          <span class="rate-value"
+            >1 {{ fromCurrency }} = {{ result.rate | number: '1.4-4' }}
+            {{ toCurrency }}</span
+          >
         </div>
         <div class="last-updated">
           <span class="date-label">Last Updated:</span>
@@ -122,8 +135,8 @@
     <div class="info-card">
       <h3 class="info-title">📊 Real-time Exchange Rates</h3>
       <p class="info-text">
-        Exchange rates are updated daily around 16:00 CET from the European Central Bank.
-        All rates are provided for informational purposes only.
+        Exchange rates are updated daily around 16:00 CET from the European
+        Central Bank. All rates are provided for informational purposes only.
       </p>
     </div>
   </div>

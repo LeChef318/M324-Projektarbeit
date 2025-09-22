@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { CurrencyService } from '../../services/currency.service';
-import { HttpClient } from '@angular/common/http';
 
 export interface ConversionResult {
   convertedAmount: number;
@@ -25,7 +24,7 @@ export class CurrencyCalculatorComponent implements OnInit {
   result: ConversionResult | null = null;
   isLoading: boolean = false;
   error: string | null = null;
-  
+
   // Available currencies fetched from API
   currencies: string[] = [];
   currencyNames: { [key: string]: string } = {};
@@ -36,7 +35,7 @@ export class CurrencyCalculatorComponent implements OnInit {
   async ngOnInit(): Promise<void> {
     // Fetch available currencies first
     await this.loadCurrencies();
-    
+
     // Perform initial conversion
     this.convertCurrency();
   }
@@ -44,22 +43,27 @@ export class CurrencyCalculatorComponent implements OnInit {
   async loadCurrencies(): Promise<void> {
     try {
       this.currenciesLoading = true;
-      
+
       // Fetch currencies with names for better UX
-      this.currencyNames = await this.currencyService.getSupportedCurrenciesWithNames();
+      this.currencyNames =
+        await this.currencyService.getSupportedCurrenciesWithNames();
       this.currencies = Object.keys(this.currencyNames).sort();
-      
+
       // Ensure default currencies are available, fallback if not
       if (!this.currencies.includes(this.fromCurrency)) {
-        this.fromCurrency = this.currencies.includes('CHF') ? 'CHF' : this.currencies[0];
+        this.fromCurrency = this.currencies.includes('CHF')
+          ? 'CHF'
+          : this.currencies[0];
       }
       if (!this.currencies.includes(this.toCurrency)) {
-        this.toCurrency = this.currencies.includes('EUR') ? 'EUR' : this.currencies[1] || this.currencies[0];
+        this.toCurrency = this.currencies.includes('EUR')
+          ? 'EUR'
+          : this.currencies[1] || this.currencies[0];
       }
     } catch (error) {
       console.error('Failed to load currencies:', error);
       this.error = 'Failed to load available currencies. Using default list.';
-      
+
       // Fallback to basic currency list
       this.currencies = await this.currencyService.getSupportedCurrencies();
     } finally {
@@ -77,7 +81,7 @@ export class CurrencyCalculatorComponent implements OnInit {
       this.result = {
         convertedAmount: this.amount,
         rate: 1,
-        date: new Date().toISOString().split('T')[0]
+        date: new Date().toISOString().split('T')[0],
       };
       this.error = null;
       return;

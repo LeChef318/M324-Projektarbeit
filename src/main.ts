@@ -11,8 +11,5 @@ if (environment.production) {
 }
 
 bootstrapApplication(AppComponent, {
-  providers: [
-    provideRouter(routes),
-    provideHttpClient()
-  ],
+  providers: [provideRouter(routes), provideHttpClient()],
 }).catch(err => console.error('Error starting app:', err));
