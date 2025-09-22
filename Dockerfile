@@ -21,6 +21,8 @@ RUN npm run build
 # Stage 2: Serve with nginx
 FROM nginx:alpine
 
+LABEL service="currency-calculator"
+
 # Copy custom nginx configuration
 COPY nginx.conf /etc/nginx/conf.d/default.conf
 
