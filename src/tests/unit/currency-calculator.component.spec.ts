@@ -146,7 +146,9 @@ describe('CurrencyCalculatorComponent', () => {
 
     await component.convertCurrency();
 
-    expect(component.error as unknown as string).toEqual('Please enter a valid amount greater than 0');
+    expect(component.error as unknown as string).toEqual(
+      'Please enter a valid amount greater than 0'
+    );
     expect(component.result).toBe(null);
   });
 
@@ -157,7 +159,9 @@ describe('CurrencyCalculatorComponent', () => {
 
     await component.convertCurrency();
 
-    expect(component.error as unknown as string).toEqual('Please enter a valid amount greater than 0');
+    expect(component.error as unknown as string).toEqual(
+      'Please enter a valid amount greater than 0'
+    );
     expect(component.result).toBe(null);
   });
 
