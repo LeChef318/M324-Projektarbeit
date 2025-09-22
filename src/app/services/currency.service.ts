@@ -111,7 +111,7 @@ export class CurrencyService {
     if (symbols && symbols.length > 0) {
       url += `&symbols=${symbols.join(',')}`;
     }
-    return this.http.get(url).pipe(catchError(this.handleError));
+    return this.http.get<{ [date: string]: { [currency: string]: number } }>(url).pipe(catchError(this.handleError));
   }
 
   /**
