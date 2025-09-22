@@ -333,4 +333,153 @@ describe('CurrencyCalculatorComponent', () => {
 
     expect(component.currenciesLoading).toBe(false);
   });
+
+  // Additional tests to improve coverage
+  it('should call onAmountChange when amount changes', () => {
+    spyOn(component, 'convertCurrency').and.returnValue(Promise.resolve());
+    component.amount = 100;
+    
+    component.onAmountChange();
+    
+    expect(component.convertCurrency).toHaveBeenCalled();
+  });
+
+  it('should not call convertCurrency when amount is invalid in onAmountChange', () => {
+    spyOn(component, 'convertCurrency').and.returnValue(Promise.resolve());
+    component.amount = 0;
+    
+    component.onAmountChange();
+    
+    expect(component.convertCurrency).not.toHaveBeenCalled();
+  });
+
+  it('should call onCurrencyChange when currency changes', () => {
+    spyOn(component, 'convertCurrency').and.returnValue(Promise.resolve());
+    
+    component.onCurrencyChange();
+    
+    expect(component.convertCurrency).toHaveBeenCalled();
+  });
+
+  it('should handle error in loadCurrencies and set fallback currencies', async () => {
+    // Create new spies to avoid conflicts
+    const mockService = jasmine.createSpyObj('CurrencyService', [
+      'getSupportedCurrenciesWithNames',
+      'getSupportedCurrencies'
+    ]);
+    
+    mockService.getSupportedCurrenciesWithNames.and.returnValue(
+      Promise.reject(new Error('API Error'))
+    );
+    mockService.getSupportedCurrencies.and.returnValue(
+      Promise.resolve(['USD', 'EUR', 'GBP'])
+    );
+
+    // Replace the service temporarily
+    component.currencyService = mockService;
+    component.error = null;
+    
+    await component.loadCurrencies();
+
+    expect(component.error).toContain('Failed to load available currencies');
+    expect(component.currencies).toEqual(['USD', 'EUR', 'GBP']);
+    expect(component.currenciesLoading).toBe(false);
+  });
+
+  it('should set loading state during currency conversion', async () => {
+    component.fromCurrency = 'USD';
+    component.toCurrency = 'EUR';
+    component.amount = 100;
+    
+    // Mock the service to simulate async behavior
+    const mockService = jasmine.createSpyObj('CurrencyService', ['convertCurrency']);
+    mockService.convertCurrency.and.returnValue(
+      Promise.resolve({
+        convertedAmount: 85,
+        rate: 0.85,
+        date: '2024-01-01'
+      })
+    );
+    component.currencyService = mockService;
+
+    const conversionPromise = component.convertCurrency();
+    
+    // Check that loading state is set
+    expect(component.isLoading).toBe(true);
+    
+    await conversionPromise;
+    
+    expect(component.isLoading).toBe(false);
+    expect(component.result).toEqual({
+      convertedAmount: 85,
+      rate: 0.85,
+      date: '2024-01-01'
+    });
+  });
+
+  it('should handle service error during conversion', async () => {
+    component.fromCurrency = 'USD';
+    component.toCurrency = 'EUR';
+    component.amount = 100;
+    
+    // Mock the service to throw an error
+    const mockService = jasmine.createSpyObj('CurrencyService', ['convertCurrency']);
+    mockService.convertCurrency.and.returnValue(
+      Promise.reject(new Error('Network error'))
+    );
+    component.currencyService = mockService;
+
+    await component.convertCurrency();
+    
+    expect(component.error).toBe('Failed to fetch exchange rates. Please try again later.');
+    expect(component.isLoading).toBe(false);
+  });
+
+  it('should handle currency fallback when default currencies not available', async () => {
+    const mockCurrencies = {
+      'USD': 'US Dollar',
+      'GBP': 'British Pound'
+    };
+    
+    const mockService = jasmine.createSpyObj('CurrencyService', ['getSupportedCurrenciesWithNames']);
+    mockService.getSupportedCurrenciesWithNames.and.returnValue(Promise.resolve(mockCurrencies));
+    
+    component.currencyService = mockService;
+    component.fromCurrency = 'CHF'; // Not available in mock
+    component.toCurrency = 'EUR';   // Not available in mock
+    
+    await component.loadCurrencies();
+    
+    // Should fallback to available currencies (sorted alphabetically)
+    expect(component.fromCurrency).toBe('GBP'); // First available (alphabetically)
+    expect(component.toCurrency).toBe('USD');   // Second available (alphabetically)
+  });
+
+  it('should handle case when only one currency is available', async () => {
+    const mockCurrencies = {
+      'USD': 'US Dollar'
+    };
+    
+    const mockService = jasmine.createSpyObj('CurrencyService', ['getSupportedCurrenciesWithNames']);
+    mockService.getSupportedCurrenciesWithNames.and.returnValue(Promise.resolve(mockCurrencies));
+    
+    component.currencyService = mockService;
+    component.fromCurrency = 'CHF';
+    component.toCurrency = 'EUR';
+    
+    await component.loadCurrencies();
+    
+    // Should fallback to the only available currency for both
+    expect(component.fromCurrency).toBe('USD');
+    expect(component.toCurrency).toBe('USD'); // Falls back to first currency when second not available
+  });
+
+  it('should not call convertCurrency when amount is null in onAmountChange', () => {
+    spyOn(component, 'convertCurrency').and.returnValue(Promise.resolve());
+    component.amount = null as any;
+    
+    component.onAmountChange();
+    
+    expect(component.convertCurrency).not.toHaveBeenCalled();
+  });
 });
