@@ -5,7 +5,7 @@
 service: myapp
 
 # Name vom Container-Image
-image: m324/myapp
+image: m324/currency-calculator
 
 # Auf diesen Server deployen
 # INFO: Wir verwenden die öffentliche IP der AWS-VM via CI-Pipeline
