@@ -1,0 +1,130 @@
+<div class="calculator-container">
+  <div class="calculator-header">
+    <h1 class="calculator-title">Currency Calculator</h1>
+    <p class="calculator-description">
+      Convert currencies with real-time exchange rates from the European Central Bank
+    </p>
+  </div>
+
+  <div class="calculator-card">
+    <form class="calculator-form" (ngSubmit)="convertCurrency()">
+      <!-- Amount Input -->
+      <div class="form-group">
+        <label for="amount" class="form-label">Amount</label>
+        <input
+          type="number"
+          id="amount"
+          class="form-input"
+          [(ngModel)]="amount"
+          name="amount"
+          min="0.01"
+          step="0.01"
+          placeholder="Enter amount"
+          (input)="onAmountChange()"
+          required
+        />
+      </div>
+
+      <!-- Currency Selection -->
+      <div class="currency-selection">
+        <!-- From Currency -->
+        <div class="form-group">
+          <label for="fromCurrency" class="form-label">From</label>
+          <select
+            id="fromCurrency"
+            class="form-select"
+            [(ngModel)]="fromCurrency"
+            name="fromCurrency"
+            (change)="onCurrencyChange()"
+            [disabled]="currenciesLoading"
+          >
+            <option *ngIf="currenciesLoading" value="">Loading currencies...</option>
+            <option *ngFor="let currency of currencies" [value]="currency">
+              {{ currency }} - {{ currencyNames[currency] || currency }}
+            </option>
+          </select>
+        </div>
+
+        <!-- Swap Button -->
+        <div class="swap-container">
+          <button
+            type="button"
+            class="swap-button"
+            (click)="swapCurrencies()"
+            [disabled]="isLoading || currenciesLoading"
+            title="Swap currencies"
+          >
+            ⇄
+          </button>
+        </div>
+
+        <!-- To Currency -->
+        <div class="form-group">
+          <label for="toCurrency" class="form-label">To</label>
+          <select
+            id="toCurrency"
+            class="form-select"
+            [(ngModel)]="toCurrency"
+            name="toCurrency"
+            (change)="onCurrencyChange()"
+            [disabled]="currenciesLoading"
+          >
+            <option *ngIf="currenciesLoading" value="">Loading currencies...</option>
+            <option *ngFor="let currency of currencies" [value]="currency">
+              {{ currency }} - {{ currencyNames[currency] || currency }}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Convert Button -->
+      <button
+        type="submit"
+        class="convert-button"
+        [disabled]="isLoading || currenciesLoading || !amount || amount <= 0"
+      >
+        <span *ngIf="isLoading" class="loading-spinner">⟳</span>
+        {{ isLoading ? 'Converting...' : 'Convert' }}
+      </button>
+    </form>
+
+    <!-- Error Message -->
+    <div *ngIf="error" class="error-message">
+      <span class="error-icon">⚠️</span>
+      {{ error }}
+    </div>
+
+    <!-- Result Display -->
+    <div *ngIf="result && !error" class="result-container">
+      <div class="result-main">
+        <div class="result-amount">
+          <span class="original-amount">{{ amount | number:'1.2-2' }} {{ fromCurrency }}</span>
+          <span class="equals">=</span>
+          <span class="converted-amount">{{ result.convertedAmount | number:'1.2-2' }} {{ toCurrency }}</span>
+        </div>
+      </div>
+      
+      <div class="result-details">
+        <div class="exchange-rate">
+          <span class="rate-label">Exchange Rate:</span>
+          <span class="rate-value">1 {{ fromCurrency }} = {{ result.rate | number:'1.4-4' }} {{ toCurrency }}</span>
+        </div>
+        <div class="last-updated">
+          <span class="date-label">Last Updated:</span>
+          <span class="date-value">{{ result.date }}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Info Section -->
+  <div class="info-section">
+    <div class="info-card">
+      <h3 class="info-title">📊 Real-time Exchange Rates</h3>
+      <p class="info-text">
+        Exchange rates are updated daily around 16:00 CET from the European Central Bank.
+        All rates are provided for informational purposes only.
+      </p>
+    </div>
+  </div>
+</div>
