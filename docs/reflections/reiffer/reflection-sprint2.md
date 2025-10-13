@@ -27,7 +27,6 @@ Ich bin stolz darauf dass ich nun besser weiss wie Docker funktioniert. Ausserde
 
 # 1.8
 Für zukünftige Projekte finde ich es gut dass wir eine genaue Gruppenaufteilung haben und jeder seine Rolle im Team hat und die Arbeit so geregelt ist. Das heisst ich fand die Gruppenwahl am Anfang des Moduls sehr gut so hatte jede Gruppe für jedes Thema eine starke Hand. Ich fand es toll das wir eine Gruppenarbeit in einem Team durchführen konnten und der Aufbau der Sprints fand ich super dadurch wurden wir etwas gefordert doch waren auch nicht überfordert. 
-
 # 1.9
 Am Anfang war die Kommunikation etwas schwierig dies sollte man von Anfang an nächstes mal klären.
 Auf das Modul bezogen fände ich es cool wenn man das nächste Mal noch etwas tiefer in die Themen des zweiten Sprints gehen würde und anstatt die Kamal Konfiguration zu kopieren diese und das Deployment selber Schritt für Schritt aufbauen würden. 
