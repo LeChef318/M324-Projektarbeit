@@ -31,3 +31,4 @@ Besonders stolz bin ich auf meine PR-Validation. Obwohl die Action nicht direkt 
 Ich finde den Fokus auf Zusammenarbeit im Team sehr gut, jedoch wäre es evtl. besser etwas grössere Teams zu machen mit einer festere Rollenzuteilung. Dies würde zwar einzelnen bestimmte Aspekte weniger direkt zeigen, jedoch verschiedene Verantwortlichkeiten besser verdeutlichen (oder evtl. Rollenrotation alle 2 Wochen).
 Die freie Projektwahl ist zwar gut um erste Diskussionen in den Teams zu forcieren, war jedoch (zumindest in unserem Team) ein doch eher langsamer Prozess. Dies könnte mit Standart-Projekten (oder eine vorgegebene Auswahl an Projekten) besschleunigt werden und andere Themen hätten mehr Platz.
 Die kaskadierende Gruppenwahl (ich nenn das jetzt einfach mal so...) am Anfang des Moduls war sehr gut (nicht nur weil es meine Idee war;)). Dies hat meiner Meinung nach die "übliche" Gruppenverteilung der Klasse etwas aufgebrochen.
+
