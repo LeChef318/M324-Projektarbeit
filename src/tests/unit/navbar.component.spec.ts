@@ -72,8 +72,13 @@ describe('NavbarComponent', () => {
     const homeItem = component.navItems.find(item => item.label === 'Home');
     expect(homeItem?.isWip).toBeFalsy(); // undefined or false are both falsy
 
+    const calculatorItem = component.navItems.find(
+      item => item.label === 'Currency Calculator'
+    );
+    expect(calculatorItem?.isWip).toBeFalsy(); // Currency Calculator is no longer WIP
+
     const wipItems = component.navItems.filter(item => item.isWip);
-    expect(wipItems.length).toBe(4);
+    expect(wipItems.length).toBe(3); // Only 3 items are WIP now
   });
 
   it('should render all navigation items', () => {
