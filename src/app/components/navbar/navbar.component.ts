@@ -18,7 +18,7 @@ export interface NavItem {
 export class NavbarComponent {
   navItems: NavItem[] = [
     { label: 'Home', route: '/' },
-    { label: 'Currency Calculator', route: '/calculator', isWip: true },
+    { label: 'Currency Calculator', route: '/calculator' },
     { label: 'Currency List', route: '/currencies', isWip: true },
     { label: 'Historical Values', route: '/history', isWip: true },
     { label: 'Graphical Trends', route: '/trends', isWip: true },
